@@ -1,0 +1,6 @@
+{
+  "name": "Nexus AI",
+  "description": "A creative, atmospheric AI chatbot with persistent memory powered by Groq and MongoDB.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}

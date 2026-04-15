@@ -1,0 +1,174 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400&display=swap');
+
+:root {
+  --color-bg-deep: #050506;
+  --color-bg-surface: #111114;
+  --color-accent-glow: #00f2ff;
+  --color-accent-muted: #007780;
+  --color-user-primary: #1e40af;
+  --color-user-secondary: #1e3a8a;
+  --color-ai-primary: #10b981;
+  --color-ai-secondary: #047857;
+  --color-thought-primary: #f59e0b;
+  --color-thought-secondary: #d97706;
+  --color-text-main: #e0e0e6;
+  --color-text-dim: #888891;
+  --color-border: #27272a;
+}
+
+.light {
+  --color-bg-deep: #f8fafc;
+  --color-bg-surface: #ffffff;
+  --color-accent-glow: #0ea5e9;
+  --color-accent-muted: #0369a1;
+  --color-user-primary: #7c3aed;
+  --color-user-secondary: #ede9fe;
+  --color-ai-primary: #059669;
+  --color-ai-secondary: #ecfdf5;
+  --color-thought-primary: #d97706;
+  --color-thought-secondary: #fffbeb;
+  --color-text-main: #1e293b;
+  --color-text-dim: #64748b;
+  --color-border: #e2e8f0;
+}
+
+@theme {
+  --font-sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-serif: "Georgia", serif;
+  
+  --color-bg-deep: var(--color-bg-deep);
+  --color-bg-surface: var(--color-bg-surface);
+  --color-accent-glow: var(--color-accent-glow);
+  --color-accent-muted: var(--color-accent-muted);
+  --color-user-primary: var(--color-user-primary);
+  --color-user-secondary: var(--color-user-secondary);
+  --color-ai-primary: var(--color-ai-primary);
+  --color-ai-secondary: var(--color-ai-secondary);
+  --color-thought-primary: var(--color-thought-primary);
+  --color-thought-secondary: var(--color-thought-secondary);
+  --color-text-main: var(--color-text-main);
+  --color-text-dim: var(--color-text-dim);
+  --color-border: var(--color-border);
+}
+
+@layer base {
+  body {
+    @apply bg-bg-deep text-text-main overflow-hidden font-sans;
+  }
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-dim);
+}
+
+.streaming-cursor {
+  border-right: 2px solid var(--color-accent-glow);
+  animation: blink 0.8s infinite;
+}
+
+/* Markdown Styling */
+.prose {
+  color: var(--color-text-main);
+}
+.prose p {
+  margin-bottom: 0.75rem;
+}
+.prose p:last-child {
+  margin-bottom: 0;
+}
+.prose strong {
+  color: var(--color-accent-glow);
+  font-weight: 600;
+}
+.prose ul, .prose ol {
+  margin-left: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+.prose li {
+  margin-bottom: 0.25rem;
+}
+.prose code {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.1rem 0.3rem;
+  border-radius: 0.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+}
+.prose pre {
+  background: #000;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin: 1rem 0;
+  border: 1px solid var(--color-border);
+}
+.prose pre code {
+  background: transparent;
+  padding: 0;
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+/* Tooltip Styling */
+.tooltip-container {
+  position: relative;
+}
+
+.tooltip-content {
+  position: absolute;
+  left: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 50;
+  width: 200px;
+  padding: 12px;
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  pointer-events: none;
+}
+
+.tooltip-container:hover .tooltip-content {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) translateX(4px);
+}
+
+.tooltip-arrow {
+  position: absolute;
+  left: -6px;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+  width: 10px;
+  height: 10px;
+  background: var(--color-bg-surface);
+  border-left: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
